@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <style>
-         body {
-            //background-image: url("hond.jpg");
-			//background-repeat: no-repeat;
-			//background-size: cover
-			//bgcolor=”#33475b"
-         }
-		 
-		 p {
-			//background-color: #ff0000;			
-			}
-			
+   <style>	 			
 		button {
 			background-image: url("ZD-logo.jpg");
 			//background-size: cover;
@@ -23,28 +12,27 @@
 			  padding: 8px 12px;
 			  //background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
 		} 
-		
-		h1 {
-			//box-shadow: 8px 8px 5px #444;
+	
+		img {
+			width:40px;
 		}
-		
-		img {width:40px;}
 		 
-     </style>
+    </style>
     <title>Zwarte Duiminator</title>
 	<link rel="icon" type="image/x-icon" href="ZD-ico.jpg">
 		<script>
-		  function generateName() {
+		var randomVoorNaam;
+		var randomFirstName;
+		var randomLastName;
+		var randomTrait;
+		
+		function generateName() {
 			// Define arrays
-			
 		  var voorNaam = ["Gruber","Waldemar","Janus","Antoine","Martinus","Luther","Poes","Constantijn","Pieter","Herbel","Gerardus","Dries","Erwin","Joost","Didewar","Karel","Rik","Eegert","Allaert","Boudewijn","Gerrit","Richter","Koenraad","Otto","Bloem","Sander","Dirk","Kirke","Godskalk","Ergosius","Werner","Antonius","Ludovicus","Nicolaas","Dieboud","Cedric","Adolphus","Aarts","Gerbrandt","Herman","Abe","Baard","Sjouke","Sietse","Haan","Zeger","Petrus","Siebe","Hugo","Kees","Armoud","Friedrich","Sebastiaan","Brabardus","Atrofius","Hamer","Arend","Cornelis","Levi","Lombardt","Jebbe","Mikal","Hans","Leon","Friedrich","Emil","Filemon","Laurens","Silvijn","Tjerk","Aegidius","Evermoed","Haeck","Hamer","Riddelof","Storm","Trovis","Havik","Tristan","Ferguut","Joris","Tijl","Zeger","Erefried","Folcbert","Godebert","Hugo","Kraft","Knoet","Niseforus","Filip","Reinout","Stefanus","Réthere","Reynier","Thomas","Manfred","Kasimir","Joachim","Helmburg"];
 		  var firstNames = ["Stuif", "Glas", "Pekel", "Klei", "Egel", "Aar","Leer","Thee","Leuter","Karamel","Brand","Moeders","Heir","Enkema","Post","Amber","Epkema","Ader","Bascheleer","Martinus","Vrancken","Grijs","Roos","Lief","Adolphus","Jacobuszoon","Dove","Pier","Kobijn","Willemijnse","Bruut","Man","Wal","Schopze","Leukert","Wolsma","Grip","Glas","Rauchmann","Kaas","Oude","Kirbrogt","Kever","Prei","Wilgen","Zoete","Wol","Kammer","Ham","Beter","Hoog","Schoon","Goud","Wagen","Onder","Lood","Taai","Ruit","Veulen","Schetser","Uier","Draak","Pruik","Vruchten","Mossel","Uilen","IJs", "Kinder", "Teen", "Hond", "Varkens", "Korst" ];
 		  var lastNames = ["graver","traan","macht","muis","kerk","schaar","stuif","akker","pekel","zout","zoon","nagel","koreveld","loos","ziek","tong","strot","kaak","honing","krul","kreun","spiegel","brand", "spetters", "slijt", "krans", "geschopt", "maag"];
 		  var traits = ["een ketter", "actief", "achterdochtig", "assertief", "afwachtend", "ambitieus", "brutaal", "behulpzaam", "chaotisch", "creatief", "dominant", "dapper", "eigenwijs", "zelfverzekerd", "een doorzetter", "gehaast", "eerlijk", "gesloten", "enthousiast", "gevoelig", "flexibel", "koppig", "spontaan", "trouw", "gedreven", "onrustig", "sportief", "onzeker", "kalm", "passief", "leergierig", "prikkelbaar", "lief", "roekeloos", "zorgzaam", "slordig", "nauwkeurig", "standvastig", "netjes", "streng", "nieuwsgierig", "vredelievend", "ordelijk", "wantrouwig", "geduldig", "wispelturig", "rustig", "wispelturig", "sociaal", "stiekem verlief op Broeder Stuifakker", "door zijn vrouw verlaten"];
 			
-		  var krantenKop = [" schuldig bevonden aan smaad en seksueel misbruik van schrijfster", " deelt update vanuit het ziekenhuis: 'Ik voel me gezegend'", " schopt onschuldige hond: 'Hij keek naar me, hij verdiende het!'"];
-
-
 			// Generate random index for first and last names
 		  var randomVoorNaamIndex = Math.floor(Math.random() * voorNaam.length);
 		  var randomFirstNameIndex = Math.floor(Math.random() * firstNames.length);
@@ -52,54 +40,60 @@
 		  var randomTraitIndex = Math.floor(Math.random() * traits.length);
 			
 			// Get the randomly selected first and last names
-		  var randomVoorNaam = voorNaam[randomVoorNaamIndex];
-		  var randomFirstName = firstNames[randomFirstNameIndex];
-		  var randomLastName = lastNames[randomLastNameIndex];
-		  var randomTrait = traits[randomTraitIndex];
-
-		  //Stats
-		  var str = Math.floor(Math.random() * 12) + 8;
-		  var dex = Math.floor(Math.random() * 12) + 8;
-		  var con = Math.floor(Math.random() * 12) + 8;
-		  var int = Math.floor(Math.random() * 12) + 8;
-		  var wis = Math.floor(Math.random() * 12) + 8;
-		  var cha = Math.floor(Math.random() * 12) + 8;
-
-		  //Random krantenkop
-		  var randomKrantenkopIndex = Math.floor(Math.random() * krantenKop.length);
-		  var randomKrantenkop = krantenKop[randomKrantenkopIndex];	
-
+		  randomVoorNaam = voorNaam[randomVoorNaamIndex];
+		  randomFirstName = firstNames[randomFirstNameIndex];
+		  randomLastName = lastNames[randomLastNameIndex];
+		  randomTrait = traits[randomTraitIndex];
 			
 		  // Display the random name in the HTML
 		  document.getElementById("randomName").innerHTML = "Naam: " + "Broeder " + randomVoorNaam + " " + randomFirstName + randomLastName;
-		  document.getElementById("randomTrait").innerHTML = "Kenmerken: " + randomTrait + " en haat ketters"; 
-		  // Display the random stats in the HTML
-		  document.getElementById("str").innerHTML = "STR: " + str;
-		  document.getElementById("dex").innerHTML = "DEX: " + dex;
-		  document.getElementById("con").innerHTML = "CON: " + con;
-		  document.getElementById("int").innerHTML = "INT: " + int;
-		  document.getElementById("wis").innerHTML = "WIS: " + wis;
-		  document.getElementById("cha").innerHTML = "CHA: " + cha;
-			//krantenkop
-		  //document.getElementById("kop").innerHTML = "BREAKING NEWS! " + randomVoorNaam + " " + randomFirstName + randomLastName + randomKrantenkop;
+		  document.getElementById("randomTrait").innerHTML = "Kenmerken: " + randomTrait + " en haat ketters"; 		  
+		}
+	
+		function generateStats(){
+			
+				//Stats
+			  var str = Math.floor(Math.random() * 12) + 8;
+			  var dex = Math.floor(Math.random() * 12) + 8;
+			  var con = Math.floor(Math.random() * 12) + 8;
+			  var int = Math.floor(Math.random() * 12) + 8;
+			  var wis = Math.floor(Math.random() * 12) + 8;
+			  var cha = Math.floor(Math.random() * 12) + 8;
+				
+			  // Display the random stats in the HTML
+			  document.getElementById("str").innerHTML = "STR: " + str;
+			  document.getElementById("dex").innerHTML = "DEX: " + dex;
+			  document.getElementById("con").innerHTML = "CON: " + con;
+			  document.getElementById("int").innerHTML = "INT: " + int;
+			  document.getElementById("wis").innerHTML = "WIS: " + wis;
+			  document.getElementById("cha").innerHTML = "CHA: " + cha;
+		}
+			  
+		  
+		function generateHeadline(){
+				  var krantenKop = [" schuldig bevonden aan smaad en seksueel misbruik van schrijfster", " deelt update vanuit het ziekenhuis: 'Ik voel me gezegend'", " schopt onschuldige hond: 'Hij keek naar me, hij verdiende het!'"];
+				  //Random krantenkop
+				  var randomKrantenkopIndex = Math.floor(Math.random() * krantenKop.length);
+				  var randomKrantenkop = krantenKop[randomKrantenkopIndex];	
+				  
+				  
+				  //HEADLINE TEST
+					var verbs = ["eet", "smite", "steelt", "vernietigd", "red", "knijpt", "bevriend", "bevecht", "verlijd", "adopteerd", "streelt", "likt", "schopt"];
+					var objects = ["kinderen", "honden", "knechten", "paarden", "internet", "ketters", "elven"];
+					/////////////////////////////////////////
+					var verb = verbs[Math.floor(Math.random() * verbs.length)];
+					var object = objects[Math.floor(Math.random() * objects.length)];
 
-	//HEADLINE TEST
-				var verbs = ["eet", "smite", "steelt", "vernietigd", "red", "knijpt", "bevriend", "bevecht", "verlijd", "adopteerd", "streelt", "likt", "schopt"];
-				var objects = ["kinderen", "honden", "knechten", "paarden", "internet", "ketters", "elven"];
-				/////////////////////////////////////////
-				var verb = verbs[Math.floor(Math.random() * verbs.length)];
-				var object = objects[Math.floor(Math.random() * objects.length)];
-
-				var headline = "LAATSTE NIEUWS! Broeder " + randomVoorNaam + " " + randomFirstName + randomLastName + " " + verb + " " + object + "!";
-				document.getElementById("headline").innerHTML = headline;
-	//HEADLINE TEST
-
-		  }
+					var headline = "LAATSTE NIEUWS! Broeder " + randomVoorNaam + " " + randomFirstName + randomLastName + " " + verb + " " + object + "!";
+					document.getElementById("headline").innerHTML = headline;
+				//HEADLINE TEST
+		}
+		  
 		</script>
 	</head>
   <body>
   	<h1>Zwarte Duiminator <img src = "ZD-logo.jpg"></h1>
-    <button onclick="generateName()">Genereer een Broeder </button>
+    <button onclick="generateName(); generateStats(); generateHeadline();">Genereer een Broeder </button>
     <div>
 	<p id="randomName"></p>
     <p id="randomTrait"></p>
