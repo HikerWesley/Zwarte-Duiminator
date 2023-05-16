@@ -2,7 +2,7 @@
 <html>
   <head>
    <style>	 			
-		button {
+		#buttonBroeder {
 			background-image: url("ZD-logo.jpg");
 			//background-size: cover;
 			  width: 10em;
@@ -12,11 +12,25 @@
 			  padding: 8px 12px;
 			  //background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
 		} 
+		
+		#buttonSave {
+			//background-image: url("ZD-logo.jpg");
+			//background-size: cover;
+			  width: 10em;
+			  height: 3em;
+			  border: 1px solid #333;
+			  box-shadow: 8px 8px 5px #444;
+			  padding: 8px 12px;
+			  //display: none;
+		} 
 	
 		img {
 			width:40px;
 		}
-		 
+		
+		h2{
+			//display: none;
+		}
     </style>
     <title>Zwarte Duiminator</title>
 	<link rel="icon" type="image/x-icon" href="ZD-ico.jpg">
@@ -25,10 +39,13 @@
 		var randomFirstName;
 		var randomLastName;
 		var randomTrait;
-		
+		var waardes;
+		var savedWaardes;
+		var broederSaved;
+	
 			// Arrays
 		var voorNaam = ["Gruber","Waldemar","Janus","Antoine","Martinus","Luther","Poes","Constantijn","Pieter","Herbel","Gerardus","Dries","Erwin","Joost","Didewar","Karel","Rik","Eegert","Allaert","Boudewijn","Gerrit","Richter","Koenraad","Otto","Bloem","Sander","Dirk","Kirke","Godskalk","Ergosius","Werner","Antonius","Ludovicus","Nicolaas","Dieboud","Cedric","Adolphus","Aarts","Gerbrandt","Herman","Abe","Baard","Sjouke","Sietse","Haan","Zeger","Petrus","Siebe","Hugo","Kees","Armoud","Friedrich","Sebastiaan","Brabardus","Atrofius","Hamer","Arend","Cornelis","Levi","Lombardt","Jebbe","Mikal","Hans","Leon","Friedrich","Emil","Filemon","Laurens","Silvijn","Tjerk","Aegidius","Evermoed","Haeck","Hamer","Riddelof","Storm","Trovis","Havik","Tristan","Ferguut","Joris","Tijl","Zeger","Erefried","Folcbert","Godebert","Hugo","Kraft","Knoet","Niseforus","Filip","Reinout","Stefanus","Réthere","Reynier","Thomas","Manfred","Kasimir","Joachim","Helmburg", "Berend", "Maurits", "Omar", "Simon", "Augustus", "Bastiaan", "Sebastiaan", "Adriaan", "Bas", "Bob", "Wilmar", "Andries"];
-		var firstNames = ["Stuif", "Glas", "Pekel", "Klei", "Egel", "Aar","Leer","Thee","Leuter","Karamel","Brand","Moeders","Heir","Enkema","Post","Amber","Epkema","Ader","Bascheleer","Martinus","Vrancken","Grijs","Roos","Lief","Adolphus","Jacobuszoon","Dove","Pier","Kobijn","Willemijnse","Bruut","Man","Wal","Schopze","Leukert","Wolsma","Grip","Glas","Rauchmann","Kaas","Oude","Kirbrogt","Kever","Prei","Wilgen","Zoete","Wol","Kammer","Ham","Beter","Hoog","Schoon","Goud","Wagen","Onder","Lood","Taai","Ruit","Veulen","Schetser","Uier","Draak","Pruik","Vruchten","Mossel","Uilen","IJs", "Kinder", "Teen", "Hond", "Varkens", "Korst", "Woel", "Steen", "Koffie", "Manden", "Sneeuw", "Peper", "Banaan", "Vleder", "Schuim", "Zeep", "Duizend", "Room"];
+		var firstNames = ["Stuif", "Glas", "Pekel", "Klei", "Egel", "Aar","Leer","Thee","Leuter","Karamel","Brand","Moeders","Heir","Enkema","Post","Amber","Epkema","Ader","Bascheleer","Martinus","Vrancken","Grijs","Roos","Lief","Adolphus","Jacobuszoon","Dove","Pier","Kobijn","Willemijnse","Bruut","Man","Wal","Schopze","Leukert","Wolsma","Grip","Glas","Rauchmann","Kaas","Oude","Kirbrogt","Kever","Prei","Wilgen","Zoete","Wol","Kammer","Ham","Beter","Hoog","Schoon","Goud","Wagen","Onder","Lood","Taai","Ruit","Veulen","Schetser","Uier","Draak","Pruik","Vruchten","Mossel","Uilen","IJs", "Kinder", "Teen", "Hond", "Varkens", "Korst", "Woel", "Steen", "Koffie", "Manden", "Sneeuw", "Peper", "Vleder", "Schuim", "Zeep", "Duizend", "Room"];
 		var lastNames = ["graver","traan","macht","muis","kerk","schaar","stuif","akker","pekel","zout","zoon","nagel","koreveld","loos","ziek","tong","strot","kaak","honing","krul","kreun","spiegel","brand", "spetters", "slijt", "krans", "geschopt", "maag", "muis", "schuur", "kanjer", "mand", "trechter", "zak", "borstel", "koffer", "schuit", "hengst", "nevel"];
 
 		var traits = ["een ketter", "actief", "achterdochtig", "assertief", "afwachtend", "ambitieus", "brutaal", "behulpzaam", "chaotisch", "creatief", "dominant", "dapper", "eigenwijs", "zelfverzekerd", "een doorzetter", "gehaast", "eerlijk", "gesloten", "enthousiast", "gevoelig", "flexibel", "koppig", "spontaan", "trouw", "gedreven", "onrustig", "sportief", "onzeker", "kalm", "passief", "leergierig", "prikkelbaar", "lief", "roekeloos", "zorgzaam", "slordig", "nauwkeurig", "standvastig", "netjes", "streng", "nieuwsgierig", "vredelievend", "ordelijk", "wantrouwig", "geduldig", "wispelturig", "rustig", "wispelturig", "sociaal", "stiekem verliefd op Broeder Stuifakker", "door zijn vrouw verlaten", "heeft de moeder van Broeder Kleitemmer genomen", "Fantaseert over de voeten van de Keizer", "Buigt graag lepels", "Kan gekookte eieren in één keer doorslikken", "Vlecht manden", "Ziet dieren graag in gevangenschap", "Gnomes zijn zijn favoriete ketters", "Komt klaar bij de kleur blauw", "Waarborgt uitgestorven knolrapen", "Baddert graag tussen de roodborstjes", "Jonge stalknechten zijn noodzakelijk", "Draagt een baret", "Zijn machtige snor kriebelt de vrouwtjes"];
@@ -59,7 +76,7 @@
 		*/
 		
 		function generateName() {
-
+		  broederSaved = false;
 			// Generate random index for first and last names
 		  var randomVoorNaamIndex = Math.floor(Math.random() * voorNaam.length);
 		  var randomFirstNameIndex = Math.floor(Math.random() * firstNames.length);
@@ -74,11 +91,10 @@
 			
 		  // Display the random name in the HTML
 		  document.getElementById("randomName").innerHTML = "Naam: " + "Broeder " + randomVoorNaam + " " + randomFirstName + randomLastName;
-		  document.getElementById("randomTrait").innerHTML = "Kenmerken: " + randomTrait + " en haat ketters"; 		  
+		  document.getElementById("randomTrait").innerHTML = "Kenmerken: " + randomTrait + " en haat ketters"; 		 	  
 		}
 		
 		function generateUiterlijk () {
-		
 			var randomHaarIndex = Math.floor(Math.random() * haar.length);
 			//var randomKenmerkenUiterlijkIndex = Math.floor(Math.random() * kenmerkenUiterlijk.length);
 			
@@ -132,12 +148,32 @@
 			}
 
 			document.getElementById("stats").innerHTML = result;
+			/*
+			const savebutton = document.getElementById("buttonSave");
+			const savetext = document.getElementById("h2");
+
+			// Show the save button
+			console.log(savebutton.style.display);
+			savebutton.style.display = "block";
+			savetext.style.display = "block";
+			*/			
 		}
+		
+		function saveBroeder() {							
+			if (broederSaved == false){
+				waardes = [document.getElementById("randomName").innerHTML , document.getElementById("randomUiterlijk").innerHTML , document.getElementById("randomTrait").innerHTML , document.getElementById("kop").innerHTML ,  document.getElementById("headline").innerHTML , document.getElementById("stats").innerHTML];
+				savedWaardes = document.getElementById("savedWaardes");
+				var li = document.createElement("li");
+				li.appendChild(document.createTextNode(waardes));
+				savedWaardes.appendChild(li);
+				broederSaved = true;
+			}
+		} 		
 		</script>
 	</head>
   <body>
   	<h1>Zwarte Duiminator <img src = "ZD-logo.jpg"></h1>
-    <button onclick="generateName(); generateStats(); generateHeadline(); generateUiterlijk();">Genereer een Broeder </button>
+    <button id="buttonBroeder" onclick="generateName();generateHeadline(); generateUiterlijk(); generateStats(); ">Genereer een Broeder </button>
     <div>
 	<p id="randomName"></p>
 	<p id="randomUiterlijk"></p>
@@ -145,6 +181,9 @@
 	<p id="kop"></p>
 	<p id="headline"></p>
 	<p id="stats"></p>
+	<button id="buttonSave" onclick="saveBroeder()">Save Broeder</button>
+	<h2>Saved Broeders</h2>
+	<ul id="savedWaardes"></ul>
 	</div>
   </body>
 </html>
